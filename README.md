@@ -18,10 +18,11 @@ Work through them in order, on a corona login node.
 10. [Read merged distributions](tutorials/10-merged-distributions.md), about 10 minutes.
 11. [Measure the scaling efficiency](tutorials/11-scaling-efficiency.md), about 10 minutes.
 12. [Read the host counters of each run](tutorials/12-host-counters.md), about 10 minutes.
+13. [Read the counters of each function by layer](tutorials/13-counters-of-each-function.md), about 10 minutes.
 
 Tutorials 1 to 3 and 5 use a 162 MB sample of the sweep.
 The full sweep is one 17 GB file, `/usr/workspace/genesis-wisdom/dftracer-traces/genesis-sweep/genesis.pfw.gz`, with 9,624 runs.
-Tutorial 4 reads it in a batch job, and tutorials 6 to 12 read it in Python on a compute node, after tutorial 4 has built its index.
+Tutorial 4 reads it in a batch job, and tutorials 6 to 13 read it in Python on a compute node, after tutorial 4 has built its index.
 
 ## Check the tutorials
 
