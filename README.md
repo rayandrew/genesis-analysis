@@ -24,6 +24,20 @@ Tutorials 1 to 3 and 5 use a 162 MB sample of the sweep.
 The full sweep is one 17 GB file, `/usr/workspace/genesis-wisdom/dftracer-traces/genesis-sweep/genesis.pfw.gz`, with 9,624 runs.
 Tutorial 4 reads it in a batch job, and tutorials 6 to 13 read it in Python on a compute node, after tutorial 4 has built its index.
 
+## Set up
+
+The pages need a prerelease of dftracer-utils, and `uv.lock` pins the one they were recorded with.
+
+```bash
+uv sync
+```
+
+With pip, install the prerelease with `--pre`:
+
+```bash
+pip install --pre "dftracer-utils>=0.0.14.post6.dev0" matplotlib pandas
+```
+
 ## Check the tutorials
 
 `tools/run_tutorial.py` runs the Python blocks of a page in one session and compares each output with the text block after it.

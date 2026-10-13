@@ -314,7 +314,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "dftracer-utils", editable = "../dftracer-utils" },
+    { name = "dftracer-utils", specifier = ">=0.0.14.post6.dev0" },
     { name = "matplotlib", specifier = ">=3.11.2" },
     { name = "pandas", specifier = ">=3.0.6" },
 ]
@@ -330,23 +330,20 @@ dev = [
 
 [[package]]
 name = "dftracer-utils"
-source = { editable = "../dftracer-utils" }
-
-[package.metadata]
-requires-dist = [
-    { name = "dask", extras = ["bag", "dataframe", "distributed"], marker = "python_full_version >= '3.9' and extra == 'dev'", specifier = ">=2024.1.0" },
-    { name = "dask-jobqueue", marker = "python_full_version >= '3.9' and extra == 'dev'", specifier = "~=0.8.0" },
-    { name = "hypothesis", marker = "extra == 'dev'", specifier = ">=6.0" },
-    { name = "numpy", marker = "extra == 'dev'" },
-    { name = "pandas", marker = "extra == 'dev'" },
-    { name = "pyarrow", marker = "extra == 'dev'", specifier = ">=16" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=6.0" },
-    { name = "pytz", marker = "extra == 'dev'", specifier = ">=2024.1,<2026" },
-    { name = "ruff", marker = "extra == 'dev'" },
-    { name = "scipy", marker = "extra == 'dev'" },
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+version = "0.0.14.post6.dev0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ea/6a/2f96f14639470a1573fbccbacf70fb4a00e4985ca8427eda96788359225e/dftracer_utils-0.0.14.post6.dev0.tar.gz", hash = "sha256:6c2a0b4b873f00488d1eb0215bafbd771060a94889543bfc7b4306cbcfc26088", size = 2957193, upload-time = "2026-10-13T06:18:33.207Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bf/6c/829b407ff421738188c03f05440f858d419531831bde59fa68ce47d2d607/dftracer_utils-0.0.14.post6.dev0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:32df297bd310276931b90a07cbae440b01a1af0c1c34235f52192ecb94c32472", size = 46351864, upload-time = "2026-10-13T06:17:42.578Z" },
+    { url = "https://files.pythonhosted.org/packages/89/e8/114006451a8fd7842a995847530eaf63a625aefae1a814e4cba424c978ce/dftracer_utils-0.0.14.post6.dev0-cp312-cp312-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:09339ef863c59c3762f3e041352e006886a3115c80f7684ae73bbe645ed55f35", size = 61501015, upload-time = "2026-10-13T06:17:46.209Z" },
+    { url = "https://files.pythonhosted.org/packages/a9/5e/c08d861e88146116551b7d63a0f48e3ffea142c225970beb0207c20274b6/dftracer_utils-0.0.14.post6.dev0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:34f070c78e73a1f4ccefb04942aa011bd92105b2fcf99995f7af1457f34c5617", size = 74390035, upload-time = "2026-10-13T06:17:49.74Z" },
+    { url = "https://files.pythonhosted.org/packages/38/ea/a1dad8de4be47f7baf6ee0909bbd535be6f2d3dbe9f6ad40f9e2868023ab/dftracer_utils-0.0.14.post6.dev0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:0c52ca80f0eb9e3e82a1bbad262b52b9b5df24747c4b84e66681f0ef365e1118", size = 46351742, upload-time = "2026-10-13T06:17:52.97Z" },
+    { url = "https://files.pythonhosted.org/packages/d9/7f/5eedc00379be4ed2fc46760d2bf5900a33a284378bfe7dabcb9d59131a27/dftracer_utils-0.0.14.post6.dev0-cp313-cp313-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:7e3ebc3b56ad552ef5b27017ac626981cdc4e73fcd90f705a769ad8aa8696615", size = 61500919, upload-time = "2026-10-13T06:17:56.008Z" },
+    { url = "https://files.pythonhosted.org/packages/8c/2b/8a5c1b2816675e585d8d6a096d30e02ec4165170c5d657541c2dd5de0b23/dftracer_utils-0.0.14.post6.dev0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:dbf507876514f2732b3149a8d6a63bdbb5cc5929310d3108e117eba032f6321b", size = 74389964, upload-time = "2026-10-13T06:17:59.745Z" },
+    { url = "https://files.pythonhosted.org/packages/d4/88/9680935f717b6a37cc438d4704bb223f2b8b25823e04234ea1412253f567/dftracer_utils-0.0.14.post6.dev0-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:ef52041231f179a60ab75557b3b85bd9dab2feef9dfb807e59b04d07fc0bf5a3", size = 46352394, upload-time = "2026-10-13T06:18:03.137Z" },
+    { url = "https://files.pythonhosted.org/packages/ba/42/210f73236a97cf48a1c7afdb28b22734b415cf80266fbec1cc1012ecb236/dftracer_utils-0.0.14.post6.dev0-cp314-cp314-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:c9ada036a0f2f51e32b53ba76cadb9e6fdc7c37ffafa5d208b7aef4b4f678f81", size = 61501362, upload-time = "2026-10-13T06:18:07.053Z" },
+    { url = "https://files.pythonhosted.org/packages/95/c7/c7af0b4f7d2d7c9a7ef49fcaabdeb9b3619734f3d7911cea1eb202f2e5da/dftracer_utils-0.0.14.post6.dev0-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:bae70dc4e8f59af8cfb7e272b84d86591532e76ae867be2619e37f749ce1f97b", size = 74390040, upload-time = "2026-10-13T06:18:10.571Z" },
 ]
-provides-extras = ["dev"]
 
 [[package]]
 name = "executing"

@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Tutorials that analyze the genesis sweep traces with the dftracer-utils Python API"
 requires-python = ">=3.12"
 dependencies = [
-    "dftracer-utils==0.0.14",
+    "dftracer-utils>=0.0.14.post6.dev0",
     "matplotlib>=3.11.2",
     "pandas>=3.0.6",
 ]
@@ -17,6 +17,3 @@ dev = [
     "nbmake>=1.5.5",
     "pytest>=9.1.1",
 ]
-
-[tool.uv.sources]
-dftracer-utils = { path = "../dftracer-utils", editable = true }
