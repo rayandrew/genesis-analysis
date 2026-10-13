@@ -47,7 +47,7 @@ amg = runs[
     & (runs["unique_input"] == "p1_n64x64x32")
     & (runs["nodes"] == 1)
 ]
-print(amg[["run", "ppn", "papi_set"]].sort_values("ppn"))
+display(amg[["run", "ppn", "papi_set"]].sort_values("ppn"))
 ```
 
 Load the call paths of the run with 16 processes.
@@ -78,7 +78,7 @@ def self_time(func):
 
 
 tree = self_time(func)
-print(tree.nlargest(5, "self_s")[["name", "depth", "count", "self_s"]])
+display(tree.nlargest(5, "self_s")[["name", "depth", "count", "self_s"]])
 ```
 
 A path with no children keeps all its time.
@@ -86,7 +86,7 @@ The self times add up to the time of the roots, the paths at depth 0, so nothing
 
 ```{code-cell} ipython3
 roots = tree[tree["depth"] == 0]
-print(roots[["name", "dur.sum"]])
+display(roots[["name", "dur.sum"]])
 print(round(tree["self_s"].sum(), 3), round(roots["dur.sum"].sum() / 1e6, 3))
 ```
 
@@ -99,7 +99,7 @@ Group the self time by `name` to see each function in one row.
 
 ```{code-cell} ipython3
 by_name = tree.groupby("name")[["self_s"]].sum().nlargest(10, "self_s")
-print(by_name)
+display(by_name)
 ```
 
 The sparse matrix-vector product takes most of the time of this run.
@@ -180,7 +180,7 @@ def per_process(ppn):
 
 both = per_process(2).merge(per_process(16), on="name")
 both = both.assign(grow=both["p16"] - both["p2"])
-print(both.nlargest(6, "grow"))
+display(both.nlargest(6, "grow"))
 ```
 
 ```{code-cell} ipython3

@@ -55,7 +55,7 @@ func = func[(func["app"] == "amg") & (func["system"] == "matrix") & (func["uniqu
 Q = [0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95, 0.99]
 quantiles = {f"q{int(q * 100):02d}": col("dur.sketch").sketch_quantile(q) for q in Q}
 dist = func.groupby("ppn").agg(calls=col("count").sum(), **quantiles)
-print(dist[["ppn", "calls", "q01", "q50", "q99"]])
+display(dist[["ppn", "calls", "q01", "q50", "q99"]])
 ```
 
 The quantiles are in microseconds.
@@ -66,7 +66,7 @@ The calls grow faster than the processes, and their durations spread over two or
 
 ```{code-cell} ipython3
 both = func[["ppn", "dur.p50"]].groupby("ppn").median().merge(dist[["ppn", "q50"]], on="ppn")
-print(both)
+display(both)
 ```
 
 The two medians agree within a few percent at most settings, but at 4 processes the median of all calls is 550 microseconds and the median of the runs' medians 439.

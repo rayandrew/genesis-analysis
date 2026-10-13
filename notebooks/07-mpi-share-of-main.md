@@ -100,7 +100,7 @@ That's the setting where the flop rate of tioga fell on the previous page, so th
 ```{code-cell} ipython3
 at = calls.merge(amg[["run", "system", "nodes", "ppn"]], on="run")
 tioga16 = at[(at["system"] == "tioga") & (at["nodes"] == 1) & (at["ppn"] == 16)]
-print(tioga16.groupby("name")[["dur.sum"]].sum().nlargest(5, "dur.sum"))
+display(tioga16.groupby("name")[["dur.sum"]].sum().nlargest(5, "dur.sum"))
 ```
 
 `MPI_Waitall` takes most of it, then `MPI_Allreduce`, so the processes mostly wait for messages to finish.

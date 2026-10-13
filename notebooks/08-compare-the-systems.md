@@ -61,7 +61,7 @@ main = main.assign(t=main["dur.p50"] / 1e6)
 by_system = main.pivot_table(values="t", index=setting, columns="system", aggfunc="median").to_pandas()
 ran = by_system[SYSTEMS].notna()
 by_system["systems"] = ran.apply(lambda row: "+".join(s for s in SYSTEMS if row[s]), axis=1)
-print(by_system.groupby(["app", "systems"]).size())
+display(by_system.groupby(["app", "systems"]).size())
 ```
 
 Only amg ran on all three systems, in 108 settings.
@@ -77,8 +77,8 @@ No system is the baseline, so all three show up.
 common = by_system[by_system["systems"] == "matrix+tioga+tuolumne"]
 times = common[SYSTEMS]
 rel = times.div(times.min(axis=1), axis=0)
-print(times.idxmin(axis=1).value_counts())
-print(rel.groupby(common["ppn"]).median().round(2))
+display(times.idxmin(axis=1).value_counts())
+display(rel.groupby(common["ppn"]).median().round(2))
 ```
 
 Up to 8 processes per node the three systems stay within about 50% of each other.
@@ -133,7 +133,7 @@ one = one[one["ppn"].isin([4, 16])]
 fn = per_function(one["run"].to_pandas().tolist(), one[["run", "system", *setting]]).to_pandas()
 wide = fn.pivot_table(values="self_pp", index=["ppn", "name"], columns="system").reset_index()
 at4 = wide[wide["ppn"] == 4].set_index("name")[SYSTEMS]
-print(at4.loc[at4.max(axis=1).nlargest(8).index].round(3))
+display(at4.loc[at4.max(axis=1).nlargest(8).index].round(3))
 ```
 
 The values are seconds of self time per process.
@@ -177,7 +177,7 @@ rel = wide[SYSTEMS].div(wide[SYSTEMS].min(axis=1), axis=0)
 rel["many"] = wide.index.get_level_values("ppn") >= 16
 top = wide.groupby("name")["matrix"].sum().nlargest(14).index
 table = rel[rel.index.get_level_values("name").isin(top)].groupby(["many", "name"])[SYSTEMS].median()
-print(table.round(2))
+display(table.round(2))
 ```
 
 `many` is True from 16 processes per node.

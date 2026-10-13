@@ -47,7 +47,7 @@ Each process gets the same problem size, so with no contention the time and the 
 one_node = runs[
     (runs["app"] == "amg") & (runs["unique_input"] == "p1_n64x64x32") & (runs["nodes"] == 1)
 ]
-print(one_node.groupby(["system", "ppn"]).size().pivot_table(index="system", columns="ppn", values="size"))
+display(one_node.groupby(["system", "ppn"]).size().pivot_table(index="system", columns="ppn", values="size"))
 ```
 
 There is one run for each counter set of a setting: 2 sets on matrix, 8 on tioga and 9 on tuolumne.
@@ -80,7 +80,7 @@ Their ratio is the flop rate of one process.
 solve = solve.assign(per_process=solve["v.sum"] / (solve["dur.sum"] / 1e6) / 1e9)
 solve = solve.assign(per_node=solve["per_process"] * solve["ppn"])
 rate = solve[["system", "ppn", "per_process", "per_node"]].groupby(["system", "ppn"]).median()
-print(rate)
+display(rate)
 ```
 
 ## 3. Plot both rates

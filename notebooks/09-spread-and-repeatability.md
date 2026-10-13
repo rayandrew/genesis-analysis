@@ -45,7 +45,7 @@ Their ratio is 1 when all processes take the same time.
 
 ```{code-cell} ipython3
 main = main.assign(spread=main["dur.p99"] / main["dur.p50"])
-print(main.groupby(["app", "system"])[["spread"]].quantile(0.99))
+display(main.groupby(["app", "system"])[["spread"]].quantile(0.99))
 ```
 
 For 99% of the runs of laghos, and of amg on tioga and tuolumne, the slowest process is within about 16% of the median one.
@@ -61,8 +61,8 @@ setting = ["app", "system", "unique_input", "nodes", "ppn"]
 g = main.groupby(setting)[["t"]]
 rep = g.min().rename(columns={"t": "fastest"}).merge(g.max().rename(columns={"t": "slowest"}), on=setting)
 rep = rep.assign(ratio=rep["slowest"] / rep["fastest"])
-print(rep.groupby(["app", "system"])[["ratio"]].median())
-print(rep.nlargest(5, "ratio"))
+display(rep.groupby(["app", "system"])[["ratio"]].median())
+display(rep.nlargest(5, "ratio"))
 ```
 
 ```{code-cell} ipython3
@@ -96,7 +96,7 @@ same = main[
     & (main["nodes"] == worst["nodes"])
     & (main["ppn"] == worst["ppn"])
 ]
-print(same[["run", "papi_set", "t"]].sort_values("t"))
+display(same[["run", "papi_set", "t"]].sort_values("t"))
 ```
 
 Over all such settings the slow runs come from at least five different counter sets, so no one counter set makes them slow.

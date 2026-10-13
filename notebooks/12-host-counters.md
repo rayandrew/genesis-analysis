@@ -55,7 +55,7 @@ print(wide.shape)
 The host counters cover the whole node, not only the cores of the run.
 
 ```{code-cell} ipython3
-print(wide.groupby("system")[["cpu.user_pct", "cpu.system_pct", "cpu.idle_pct"]].median())
+display(wide.groupby("system")[["cpu.user_pct", "cpu.system_pct", "cpu.idle_pct"]].median())
 ```
 
 Most of each node is idle during `main`, because a run uses only some of its cores.
@@ -72,8 +72,8 @@ setting = ["app", "unique_input", "nodes", "ppn"]
 tuo["slow"] = tuo["t"] > 5 * tuo.groupby(setting)["t"].transform("min")
 mixed = tuo[tuo.groupby(setting)["slow"].transform("any")]
 cpu_cols = ["cpu.user_pct", "cpu.system_pct", "cpu.idle_pct"]
-print(mixed.groupby("slow")[cpu_cols + ["t"]].median())
-print(mixed.groupby("slow").size())
+display(mixed.groupby("slow")[cpu_cols + ["t"]].median())
+display(mixed.groupby("slow").size())
 ```
 
 The slow runs take about 16 times longer, but their host CPU looks the same as that of the fast runs.
@@ -82,7 +82,7 @@ The slow runs take about 16 times longer, but their host CPU looks the same as t
 import numpy as np
 
 tuo["log_t"] = np.log(tuo["t"])
-print(tuo[cpu_cols + ["log_t"]].corr()["log_t"].round(2))
+display(tuo[cpu_cols + ["log_t"]].corr()["log_t"].round(2))
 ```
 
 Over all tuolumne runs, no host CPU counter follows the time of `main`.
@@ -109,4 +109,4 @@ The cause is outside what the host CPU counters measure, such as the network or 
 
 You compared the host CPU counters across systems and showed that they don't explain the slow tuolumne runs.
 
-- Back to the start: [Count the runs in a genesis trace](01-count-the-runs.ipynb)
+- Next: [Read the counters of each function by layer](13-counters-of-each-function.ipynb)
